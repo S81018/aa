@@ -48,5 +48,21 @@ $('.register form').on('submit', function (e) {
 
             }
         }
-    })
+    });
+});
+
+
+// --------------------------------注册表单验证-----------------------------------
+var form = layui.form;
+form.verify({
+    // changdu:['正则表达式','验证失败时的提示信息']
+    changdu: [/^\S{6,12}$/, '长度6~12位，不能有空格'],
+    // 使用函数
+    same: function (val) {
+        // 形参val,表示使用验证规则的输入框的值
+        var pwd = $('.pwd').val();
+        if (pwd != val) {
+            return '两次密码不一致呦';
+        }
+    }
 })
